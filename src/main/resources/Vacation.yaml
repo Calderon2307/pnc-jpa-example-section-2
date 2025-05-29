@@ -1,0 +1,137 @@
+type: collection.insomnia.rest/5.0
+name: TareaCapas
+meta:
+  id: wrk_cc53a4ecb99341a79dc2f2ce6b6e6dc7
+  created: 1748549177760
+  modified: 1748549177760
+collection:
+  - url: "{{ _.baseUrl }}"
+    name: All Vacations
+    meta:
+      id: req_11ad2999390446c290f52275fdb9f46d
+      created: 1748549291675
+      modified: 1748549605216
+      isPrivate: false
+      sortKey: -1748549291675
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Vacation X ID
+    meta:
+      id: req_1673e54801de4d898c3e29d4f85ab433
+      created: 1748549314577
+      modified: 1748549325565
+      isPrivate: false
+      sortKey: -1748549314577
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Create Vacation
+    meta:
+      id: req_45a5fdebf5454738a40f0caba2df4ebe
+      created: 1748549333846
+      modified: 1748549342748
+      isPrivate: false
+      sortKey: -1748549333846
+    method: POST
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Update Vacation
+    meta:
+      id: req_5539815964fc492abfcc4fc804d6c378
+      created: 1748549360299
+      modified: 1748549368310
+      isPrivate: false
+      sortKey: -1748549360299
+    method: PUT
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Delete Vacation
+    meta:
+      id: req_02467e3514e34b7e80c87b6cba729703
+      created: 1748549378525
+      modified: 1748549385982
+      isPrivate: false
+      sortKey: -1748549378525
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Get Employees Vacations
+    meta:
+      id: req_f7e224fb59d84a0793e8e6163244ac66
+      created: 1748549395041
+      modified: 1748549405960
+      isPrivate: false
+      sortKey: -1748549395041
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_2f44b9af35ecd11aa8001452a6c51e3181433540
+    created: 1748549177767
+    modified: 1748549177767
+environments:
+  name: Base Environment
+  meta:
+    id: env_2f44b9af35ecd11aa8001452a6c51e3181433540
+    created: 1748549177763
+    modified: 1748550404037
+    isPrivate: false
+  data:
+    baseUrl: http://localhost:8080/api/
