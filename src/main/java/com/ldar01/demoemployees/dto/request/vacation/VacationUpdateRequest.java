@@ -14,6 +14,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 public class VacationUpdateRequest {
+    @JsonProperty(value = "id")
+    @NotNull(message = "Debes colocar el ID.")
+    private Integer vacationId;
+
     @JsonProperty(value = "start_date")
     @FutureOrPresent(message = "La fecha de inicio no puede ser en pasado.")
     private LocalDate startDate;
@@ -24,4 +28,8 @@ public class VacationUpdateRequest {
 
     @JsonProperty(value = "vacation_reason")
     private String reason;
+
+    @JsonProperty(value = "employee_id")
+    @NotNull(message = "El usuario es obligatorio.")
+    private Integer employee;
 }

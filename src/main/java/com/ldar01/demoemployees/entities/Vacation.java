@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Vacation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
