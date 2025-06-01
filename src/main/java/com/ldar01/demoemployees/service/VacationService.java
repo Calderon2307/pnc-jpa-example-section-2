@@ -1,15 +1,17 @@
 package com.ldar01.demoemployees.service;
 
 import com.ldar01.demoemployees.dto.request.vacation.VacationRequest;
+import com.ldar01.demoemployees.dto.request.vacation.VacationUpdateRequest;
+import com.ldar01.demoemployees.dto.response.vacation.EmployeeVacationsResponse;
 import com.ldar01.demoemployees.dto.response.vacation.VacationResponse;
 
 import java.util.List;
 
 public interface VacationService {
     List<VacationResponse> findAll();
-    VacationResponse findById(Integer id);
+    VacationResponse findById(int id);
     VacationResponse save(VacationRequest vacationRequest);
-    VacationResponse update(VacationRequest vacationRequest);
-    VacationResponse delete(VacationRequest vacationRequest);
-    List<VacationResponse> findByEmployeeId(Integer employeeId);
+    VacationResponse update(VacationUpdateRequest vacationRequest);
+    void delete(int id);
+    EmployeeVacationsResponse findByEmployeeId(int employeeId);
 }

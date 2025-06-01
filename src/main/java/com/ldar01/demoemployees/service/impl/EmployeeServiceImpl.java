@@ -5,6 +5,7 @@ import com.ldar01.demoemployees.dto.request.employee.EmployeeUpdateRequest;
 import com.ldar01.demoemployees.dto.response.department.DepartmentResponse;
 import com.ldar01.demoemployees.dto.response.employee.EmployeeResponse;
 import com.ldar01.demoemployees.entities.Department;
+import com.ldar01.demoemployees.entities.Employee;
 import com.ldar01.demoemployees.exception.DepartmentNotFoundException;
 import com.ldar01.demoemployees.exception.EmployeeNotFoundException;
 import com.ldar01.demoemployees.repository.DepartmentRepository;
@@ -63,5 +64,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void delete(int id) {
         employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public Employee findEntityById(int id) {
+        return employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException("Employee not found"));
     }
 }

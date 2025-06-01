@@ -1,12 +1,14 @@
 package com.ldar01.demoemployees.repository;
 
+import com.ldar01.demoemployees.dto.response.vacation.VacationResponse;
 import com.ldar01.demoemployees.entities.Vacation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface VacationRepository extends JpaRepository<Vacation, Integer> {
-    Optional<Vacation> findByEmployeeId(Integer employeeId);
+    Optional<List<Vacation>> findByEmployeeId(int employeeId);
 }

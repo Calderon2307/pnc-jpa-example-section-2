@@ -26,18 +26,18 @@ public class VacationMapper {
 
     public static Vacation toEntityUpdate(
             VacationUpdateRequest vacationDTO,
-            Employee employee,
-            VacationStatus status
+            Employee employee
     ){
         return Vacation.builder()
                 .id(vacationDTO.getVacationId())
                 .startDate(vacationDTO.getStartDate())
                 .endDate(vacationDTO.getEndDate())
                 .reason(vacationDTO.getReason())
-                .status(status)
+                .status(vacationDTO.getStatus())
                 .employee(employee)
                 .build();
     }
+
 
     public static VacationResponse toDTOResponse(Vacation vacation){
         return VacationResponse.builder()

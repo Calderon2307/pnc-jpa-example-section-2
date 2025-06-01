@@ -1,5 +1,6 @@
 package com.ldar01.demoemployees.dto.request.vacation;
 
+import com.ldar01.demoemployees.entities.enums.VacationStatus;
 import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,9 @@ public class VacationUpdateRequest {
 
     @JsonProperty(value = "vacation_reason")
     private String reason;
+
+    @JsonProperty(value =  "vacation_status")
+    private VacationStatus status;
 
     @JsonProperty(value = "employee_id")
     @NotNull(message = "El usuario es obligatorio.")
