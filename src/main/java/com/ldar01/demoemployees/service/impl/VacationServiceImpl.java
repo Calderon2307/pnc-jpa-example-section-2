@@ -10,6 +10,7 @@ import com.ldar01.demoemployees.repository.VacationRepository;
 import com.ldar01.demoemployees.service.EmployeeService;
 import com.ldar01.demoemployees.service.VacationService;
 import com.ldar01.demoemployees.utils.mappers.VacationMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,7 @@ public class VacationServiceImpl implements VacationService {
     }
 
     @Override
+    @Transactional
     public VacationResponse save(VacationRequest vacationRequest) {
         Employee employee =  employeeService.findEntityById(vacationRequest.getEmployee());
         VacationStatus status = VacationStatus.PENDING;
@@ -35,6 +37,7 @@ public class VacationServiceImpl implements VacationService {
     }
 
     @Override
+    @Transactional
     public VacationResponse update(VacationUpdateRequest vacationRequest) {
         Employee employee =  employeeService.findEntityById(vacationRequest.getEmployee());
         return VacationMapper.toDTOResponse(vacationRepository.save(VacationMapper.toEntityUpdate(vacationRequest, employee)));
@@ -52,6 +55,7 @@ public class VacationServiceImpl implements VacationService {
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
         vacationRepository.deleteById(id);
     }
@@ -62,5 +66,10 @@ public class VacationServiceImpl implements VacationService {
                 employeeService.findEntityById(employeeId),
                 vacationRepository.findByEmployeeId(employeeId).orElseThrow(() -> new RuntimeException("Vacations not Found"))
         );
+    }
+
+    @Override
+    public Boolean existsById(int id) {
+        return vacationRepository.existsById(id);
     }
 }

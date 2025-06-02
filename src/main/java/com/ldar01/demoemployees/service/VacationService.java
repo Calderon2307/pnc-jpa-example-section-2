@@ -12,6 +12,7 @@ public interface VacationService {
     VacationResponse findById(int id);
     VacationResponse save(VacationRequest vacationRequest);
     VacationResponse update(VacationUpdateRequest vacationRequest);
+    Boolean existsById(int id);
     void delete(int id);
     EmployeeVacationsResponse findByEmployeeId(int employeeId);
 }
