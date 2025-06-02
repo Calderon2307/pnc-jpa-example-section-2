@@ -58,10 +58,13 @@ public class VacationMapper {
 
     public static EmployeeVacationsResponse toDTOEmployeeVacation(
             Employee employee,
+
             List<Vacation> vacations
     ){
         return EmployeeVacationsResponse.builder()
                 .employeeId(employee.getId())
+                .employeeName(employee.getName().concat(" "+employee.getLastName()))
+                .employeeDepartment(employee.getDepartment().getDepartmentName())
                 .employeeVacations(vacations
                         .stream()
                         .map(VacationMapper::toDTOResponse)

@@ -30,6 +30,11 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(e, HttpStatus.BAD_REQUEST, errors);
     }
 
+    @ExceptionHandler(VacationNoyFoundException.class)
+    public ResponseEntity<ApiErrorResponse> handleVacationNotFoundException(VacationNoyFoundException e) {
+        return buildErrorResponse(e, HttpStatus.NOT_FOUND, e.getMessage());
+    }
+
     public ResponseEntity<ApiErrorResponse> buildErrorResponse(Exception e, HttpStatus status, Object data) {
         String uri = ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath();
         return ResponseEntity.status(status).body(ApiErrorResponse.builder()

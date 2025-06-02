@@ -5,6 +5,7 @@ import com.ldar01.demoemployees.dto.request.vacation.VacationUpdateRequest;
 import com.ldar01.demoemployees.dto.response.GeneralResponse;
 import com.ldar01.demoemployees.dto.response.vacation.EmployeeVacationsResponse;
 import com.ldar01.demoemployees.dto.response.vacation.VacationResponse;
+import com.ldar01.demoemployees.exception.VacationNoyFoundException;
 import com.ldar01.demoemployees.service.VacationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class VacationController {
     public ResponseEntity<GeneralResponse> updateVacation(@RequestBody @Valid VacationUpdateRequest vacation){
         Boolean vacationExists = vacationService.existsById(vacation.getVacationId());
         if(!vacationExists){
-            throw new RuntimeException("Vacation Not Found");
+            throw new VacationNoyFoundException("Vacation Not Found");
         }
 
         return buildResponse(
@@ -52,7 +53,7 @@ public class VacationController {
     @GetMapping()
     public ResponseEntity<GeneralResponse> getAllVacations(){
         List<VacationResponse> vacations = vacationService.findAll();
-        if (vacations.isEmpty()) {throw new RuntimeException("No vacations found");}
+        if (vacations.isEmpty()) {throw new VacationNoyFoundException("No vacations found");}
         return buildResponse(
                 "Vacations Found",
                 HttpStatus.OK,
@@ -74,7 +75,7 @@ public class VacationController {
     public ResponseEntity<GeneralResponse> getEmployeeVacationsById(@PathVariable int id){
         EmployeeVacationsResponse employeeVacations = vacationService.findByEmployeeId(id);
         if(employeeVacations.getEmployeeVacations().isEmpty()){
-            throw new RuntimeException("The employee does not have any vacations");
+            throw new VacationNoyFoundException("The employee does not have any vacations");
         }
 
         return buildResponse(
